@@ -1,4 +1,4 @@
-#include "../include/SineFit.h"
+#include <SineFit.h>
 
 void cleanup(Mat ** var){
     for (int row = 0; row < (*var)->row; row++){
