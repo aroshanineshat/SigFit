@@ -15,13 +15,13 @@ static PyObject * FitThreeParam(PyObject* self, PyObject* args){
 
   PyObject *pList;
   PyObject *pItem;
-  PyObject *pFs;
-  PyObject *pCW;
+  int Fs;
+  int CW;
 
   Py_ssize_t n;
   int i;
 
-  if (!PyArg_ParseTuple(args, "O!ii", &PyList_Type, &pList, &pCW, &pFs)) {
+  if (!PyArg_ParseTuple(args, "Oii", &pList, &CW, &Fs)) {
     /* Converting Python Objects to C Objects Failed */
     return NULL;
   }
@@ -46,9 +46,10 @@ static PyObject * FitThreeParam(PyObject* self, PyObject* args){
     if(PyFloat_Check(pItem)){
       c = (float)PyFloat_AsDouble(pItem); 
     }
-    if(PyLong_Check(pItem)) {
+    else if(PyLong_Check(pItem)) {
       c = (float)PyLong_AsDouble(pItem);
     } else {
+        free (data_array); // Garbage Collection
         PyErr_SetString(PyExc_TypeError, "list items must be integers or floats.");
         return NULL;
     }
@@ -56,9 +57,7 @@ static PyObject * FitThreeParam(PyObject* self, PyObject* args){
   }
 
   Mat* result;
-  int Fs = (int)PyLong_AsLong(pFs);
-  int CW = (int)PyLong_AsLong(pCW);
-  result = ThreeFitData(n, CW, data_array, Fs);
+  result = ThreeFitData((int)n, CW, data_array, Fs);
   PyObject * output;
   output = Py_BuildValue ("(fff)", result->Data[0][0], result->Data[1][0], result->Data[2][0]); 
   

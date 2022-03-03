@@ -3,7 +3,7 @@
 
 #define PY_SSIZE_T_CLEAN
 #include "SineFit.h"
-#include <python3.8/Python.h>
+#include <Python.h>
 
 static PyObject * FitThreeParam(PyObject* self, PyObject* args);
 
