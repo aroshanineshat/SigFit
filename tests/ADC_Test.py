@@ -25,11 +25,11 @@ def run_test(iter_, F_Inp):
 
     x, y = GenerateNoisySine(F_Inp, Fs, Count)
 
-    FitParams = SigFit.FitThreeParam(y, F_Inp, Fs)
+    A, B, C = SigFit.FitThreeParam(y, F_Inp, Fs)
     FittedSine = []
     for i in x:
         omega = 2*math.pi*F_Inp*i/Fs 
-        S = FitParams[0]*math.cos(omega) + FitParams[1] * math.sin(omega) + FitParams[2]
+        S = A*math.cos(omega) + B * math.sin(omega) + C
         FittedSine.append(S)
     
     plt.figure()
