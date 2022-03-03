@@ -8,6 +8,10 @@ import subprocess
 from setuptools import setup, Extension
 import os
 
+def readme():
+    with open('README.md') as f:
+        return f.read()
+
 def pkgconfig(package, kw):
     flag_map = {'-I': 'include_dirs', '-L': 'library_dirs', '-l': 'libraries'}
     output = subprocess.getoutput(
@@ -31,9 +35,11 @@ main_module = Extension('SigFit', **keywords)
 
 setup (name = 'SigFit',
        license= "MIT License",
-       version = '1.1.0',
+       version = '1.1.1',
        author = 'Arash Roshanineshat',
        author_email = 'aroshanineshat@email.arizona.edu',
        url = 'https://github.com/aroshanineshat/SigFit',
        description = 'SigFit is a package to help you fit a sine wave to noisy sine data',
+       long_description = readme(),
+       long_description_content_type = "text/markdown", 
        ext_modules = [main_module])
