@@ -41,7 +41,7 @@ float MatrixDet(Mat*);
    data_arr: Pointer to the data array
    FS: Sampling Frequency
 */
-Mat* ThreeFitData (int datacount, float CWFreq, float* data_arr, int Fs);
-Mat* FourParamFit(int datacount, float CWFreq, float* data_arr, int Fs);
+Mat* ThreeFitData (int datacount, float CWFreq, float* data_arr, float Fs);
+Mat* FourParamFit(int datacount, float CWFreq, float* data_arr, float Fs);
 
 #endif /* __SINEFIT__ */

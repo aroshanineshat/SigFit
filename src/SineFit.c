@@ -269,7 +269,7 @@ Mat* GenerateFrequencyGrid(float CenterFreq, int GridSize){
 
 }
 
-Mat *FourParamFit(int datacount, float CWFreq, float* data_arr , int Fs ){
+Mat *FourParamFit(int datacount, float CWFreq, float* data_arr , float Fs ){
 
     Mat * FrequencyGrid;
     Mat * g_omega;
@@ -394,7 +394,7 @@ Mat *FourParamFit(int datacount, float CWFreq, float* data_arr , int Fs ){
 }
 
 
-Mat* ThreeFitData (int datacount, float freq, float* data_arr, int Fs){
+Mat* ThreeFitData (int datacount, float freq, float* data_arr, float Fs){
     Mat *D;
     D = (Mat*)malloc(sizeof(Mat));
     D->row = datacount;

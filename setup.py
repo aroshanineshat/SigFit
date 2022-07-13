@@ -31,6 +31,10 @@ keywords = {
 
 keywords = pkgconfig('python3', keywords)
 
+print ("================================")
+print ("in Debian/Ubuntu, this needs python3-dev to be installed")
+print ("================================")
+
 main_module = Extension('SigFit', **keywords)
 
 setup (name = 'SigFit',

@@ -15,13 +15,13 @@ static PyObject * FitThreeParam(PyObject* self, PyObject* args){
 
   PyObject *pList;
   PyObject *pItem;
-  int Fs;
-  int CW;
+  float Fs;
+  float CW;
 
   Py_ssize_t n;
   int i;
 
-  if (!PyArg_ParseTuple(args, "Oii", &pList, &CW, &Fs)) {
+  if (!PyArg_ParseTuple(args, "Off", &pList, &CW, &Fs)) {
     /* Converting Python Objects to C Objects Failed */
     return NULL;
   }
