@@ -33,7 +33,7 @@ static PyObject * FitThreeParam(PyObject* self, PyObject* args){
 
   if (!data_array){
     /* malloc has failed */
-    PyErr_SetString(PyExc_MemoryError, "Error allocating memory.");
+    PyErr_SetString(PyExc_MemoryError, "Error allocating memory. Make sure the input is a Python list. It does not accept other type of lists including Numpy.");
     return NULL;
   }
 
